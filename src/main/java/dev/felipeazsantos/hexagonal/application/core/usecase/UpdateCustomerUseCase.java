@@ -2,10 +2,11 @@ package dev.felipeazsantos.hexagonal.application.core.usecase;
 
 import dev.felipeazsantos.hexagonal.application.core.domain.Customer;
 import dev.felipeazsantos.hexagonal.application.ports.in.FindCustomerByIdInputPort;
+import dev.felipeazsantos.hexagonal.application.ports.in.UpdateCustomerInputPort;
 import dev.felipeazsantos.hexagonal.application.ports.out.FindAddressByZipCodeOutputPort;
 import dev.felipeazsantos.hexagonal.application.ports.out.UpdateCustomerOutputPort;
 
-public class UpdateCustomerUseCase {
+public class UpdateCustomerUseCase implements UpdateCustomerInputPort {
 
     private final FindCustomerByIdInputPort findCustomerByIdInputPort;
     private final FindAddressByZipCodeOutputPort findAddressByZipCodeOutputPort;
@@ -20,6 +21,7 @@ public class UpdateCustomerUseCase {
         this.updateCustomerOutputPort = updateCustomerOutputPort;
     }
 
+    @Override
     public void update(Customer customer, String zipCode) {
         findCustomerByIdInputPort.find(customer.getId());
         var address = findAddressByZipCodeOutputPort.find(zipCode);
