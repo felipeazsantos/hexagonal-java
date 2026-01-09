@@ -126,4 +126,112 @@ public class NamingConventionTest {
             .should()
             .resideInAPackage("..config")
             .as("Config classes must reside inside config package");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_consumer = classes()
+            .that()
+            .resideInAPackage("..adapters.in.consumer")
+            .should()
+            .haveSimpleNameEndingWith("Consumer");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_mapper = classes()
+            .that()
+            .resideInAPackage("..mapper")
+            .should()
+            .haveSimpleNameEndingWith("Mapper")
+            .orShould()
+            .haveSimpleNameEndingWith("MapperImpl");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_controller = classes()
+            .that()
+            .resideInAPackage("..adapters.in.controller")
+            .and()
+            .areNotNestedClasses()
+            .should()
+            .haveSimpleNameEndingWith("Controller");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_request = classes()
+            .that()
+            .resideInAPackage("..adapters.in.controller.request")
+            .should()
+            .haveSimpleNameEndingWith("Request");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_message = classes()
+            .that()
+            .resideInAPackage("..adapters.in.consumer.message")
+            .should()
+            .haveSimpleNameEndingWith("Message");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_adapter = classes()
+            .that()
+            .resideInAPackage("..adapters.out")
+            .and()
+            .areNotNestedClasses()
+            .should()
+            .haveSimpleNameEndingWith("Adapter");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_entity = classes()
+            .that()
+            .resideInAPackage("..adapters.out.repository.entity")
+            .should()
+            .haveSimpleNameEndingWith("Entity");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_repository = classes()
+            .that()
+            .resideInAPackage("..adapters.out.repository")
+            .and()
+            .areNotNestedClasses()
+            .should()
+            .haveSimpleNameEndingWith("Repository");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_client = classes()
+            .that()
+            .resideInAPackage("..adapters.out.client")
+            .and()
+            .areNotNestedClasses()
+            .should()
+            .haveSimpleNameEndingWith("Client");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_response = classes()
+            .that()
+            .resideInAPackage("..response")
+            .should()
+            .haveSimpleNameEndingWith("Response");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_usecase = classes()
+            .that()
+            .resideInAPackage("..application.core.usecase")
+            .should()
+            .haveSimpleNameEndingWith("UseCase");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_input_port = classes()
+            .that()
+            .resideInAPackage("..application.ports.in")
+            .should()
+            .haveSimpleNameEndingWith("InputPort");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_output_port = classes()
+            .that()
+            .resideInAPackage("..application.ports.out")
+            .should()
+            .haveSimpleNameEndingWith("OutputPort");
+
+    @ArchTest
+    public static final ArchRule should_be_suffixed_config = classes()
+            .that()
+            .resideInAPackage("..config")
+            .should()
+            .haveSimpleNameEndingWith("Config");
 }
